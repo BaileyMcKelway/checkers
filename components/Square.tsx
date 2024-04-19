@@ -1,40 +1,75 @@
 import React from 'react';
 import {
-  Dimensions,
-  TouchableOpacity,
   View,
-  ViewStyle,
+  TouchableOpacity,
+  Text,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
+import {
+  PIECES,
+  blackCheckerColor,
+  boardColor1,
+  boardColor2,
+  selectedColor1,
+  selectedColor2,
+  whiteCheckerColor,
+} from './utils';
+
+const windowWidth = Dimensions.get('window').width;
+const squaresPerRow = 8;
+const squareSize = (windowWidth * 0.9) / squaresPerRow;
 
 interface SquareProps {
   row: number;
   col: number;
   checker: number;
   handlePress: (row: number, col: number) => void;
+  isSelected: boolean | null;
 }
 
-const numCols = 8;
-const squareSize = Dimensions.get('window').width / numCols;
-const boardColor1 = '#FFD700';
-const boardColor2 = '#8B4513';
+const Square: React.FC<SquareProps> = ({
+  row,
+  col,
+  checker,
+  handlePress,
+  isSelected,
+}) => {
+  const isCheckerWhite =
+    checker === PIECES.WHITE || checker === PIECES.WHITE_KING;
+  const isCheckerBlack =
+    checker === PIECES.BLACK || checker === PIECES.BLACK_KING;
+  const isKing =
+    Math.abs(checker) === PIECES.WHITE_KING ||
+    Math.abs(checker) === PIECES.BLACK_KING;
+  const isDarkSquare = (row + col) % 2 === 1;
 
-const Square: React.FC<SquareProps> = ({ row, col, checker, handlePress }) => {
-  const isDark = (row + col) % 2 === 1;
-  const backgroundColor = isDark ? boardColor1 : boardColor2;
-  const checkerColor =
-    checker === 1 ? 'white' : checker === 2 ? 'black' : 'transparent';
+  const backgroundColor = isDarkSquare
+    ? isSelected
+      ? selectedColor1
+      : boardColor1
+    : isSelected
+    ? selectedColor2
+    : boardColor2;
+
+  const checkerColor = isCheckerWhite
+    ? whiteCheckerColor
+    : isCheckerBlack
+    ? blackCheckerColor
+    : 'transparent';
 
   return (
     <TouchableOpacity
       style={[
         styles.square,
-        { backgroundColor, width: squareSize, height: squareSize } as ViewStyle,
+        { backgroundColor, width: squareSize, height: squareSize },
       ]}
       onPress={() => handlePress(row, col)}
     >
       {checker !== 0 && (
-        <View style={[styles.checker, { backgroundColor: checkerColor }]} />
+        <View style={[styles.checker, { backgroundColor: checkerColor }]}>
+          {isKing && <Text style={styles.kingText}>K</Text>}
+        </View>
       )}
     </TouchableOpacity>
   );
@@ -42,14 +77,24 @@ const Square: React.FC<SquareProps> = ({ row, col, checker, handlePress }) => {
 
 const styles = StyleSheet.create({
   square: {
-    borderWidth: 1,
-    borderColor: '#000',
+    width: '11.25%',
+    height: '11.25%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   checker: {
     width: '80%',
     height: '80%',
     borderRadius: 25,
-    margin: '10%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 0.5,
+    borderColor: 'black',
+  },
+  kingText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
   },
 });
 
