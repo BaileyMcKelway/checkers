@@ -32,7 +32,6 @@ const CheckerBoard: React.FC = () => {
       selectPiece(row, col);
     }
   };
-
   const isValidMove = (
     targetRow: number,
     targetCol: number,
@@ -52,8 +51,8 @@ const CheckerBoard: React.FC = () => {
 
     const isValidDirection =
       isKing ||
-      (selectedPiece === PIECES.WHITE && targetRow > selectedChecker.row) ||
-      (selectedPiece === PIECES.BLACK && targetRow < selectedChecker.row);
+      (selectedPiece === PIECES.WHITE && targetRow < selectedChecker.row) ||
+      (selectedPiece === PIECES.BLACK && targetRow > selectedChecker.row);
 
     return (
       isValidTarget &&
@@ -97,9 +96,9 @@ const CheckerBoard: React.FC = () => {
     }
 
     const isWhitePromotionRow =
-      currentPlayerColor === PIECES.WHITE && row === board.length - 1;
+      currentPlayerColor === PIECES.WHITE && row === 0;
     const isBlackPromotionRow =
-      currentPlayerColor === PIECES.BLACK && row === 0;
+      currentPlayerColor === PIECES.BLACK && row === board.length - 1;
 
     return isWhitePromotionRow || isBlackPromotionRow;
   };
