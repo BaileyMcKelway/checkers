@@ -32,13 +32,13 @@ export const initializeCheckers = (): number[][] => {
 
   for (let i = 0; i < 3; i++) {
     for (let j = i % 2; j < numCols; j += 2) {
-      checkers[i][j] = 1;
+      checkers[i][j] = 2;
     }
   }
 
   for (let i = numRows - 1; i >= numRows - 3; i--) {
     for (let j = i % 2; j < numCols; j += 2) {
-      checkers[i][j] = 2;
+      checkers[i][j] = 1;
     }
   }
 
