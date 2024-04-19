@@ -1,6 +1,4 @@
 # Checkers Game
-![Screen Recording 2024-04-18 at 11 57 03 PM(1)](https://github.com/BaileyMcKelway/checkers/assets/25776618/192a6706-c872-4922-9d9e-bd4770eef979)
-
 This repository contains a simple implementation of the classic board game Checkers using React Native and TypeScript.
 
 Link: https://checkers-one.vercel.app/
@@ -33,6 +31,9 @@ The main components of the project are:
 - `Board.tsx`: A component that represents the game board and renders individual squares.
 - `Square.tsx`: A component that represents a single square on the game board and renders the piece (if any) on that square.
 - `utils.ts`: A utility file that contains helper functions and constants used throughout the project.
+
+![Screen Recording 2024-04-18 at 11 57 03 PM(1)](https://github.com/BaileyMcKelway/checkers/assets/25776618/192a6706-c872-4922-9d9e-bd4770eef979)
+
 
 ## License
 
