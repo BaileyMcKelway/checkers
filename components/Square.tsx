@@ -18,7 +18,7 @@ import {
 
 const windowWidth = Dimensions.get('window').width;
 const squaresPerRow = 8;
-const squareSize = (windowWidth * 0.9) / squaresPerRow;
+const squareSize = Math.min((windowWidth * 0.9) / squaresPerRow, 112.5);
 
 interface SquareProps {
   row: number;
@@ -77,15 +77,17 @@ const Square: React.FC<SquareProps> = ({
 
 const styles = StyleSheet.create({
   square: {
-    width: '11.25%',
-    height: '11.25%',
+    width: squareSize,
+    height: squareSize,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 0.5,
+    borderColor: 'black',
   },
   checker: {
     width: '80%',
     height: '80%',
-    borderRadius: 25,
+    borderRadius: squareSize * 0.4,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 0.5,

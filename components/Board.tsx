@@ -34,11 +34,10 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '90%',
     height: 'auto',
+    maxWidth: 900,
+    maxHeight: 900,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 3,
-    borderColor: 'black',
-    overflow: 'hidden',
   },
 });
 
