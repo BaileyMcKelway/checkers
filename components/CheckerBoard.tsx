@@ -86,6 +86,24 @@ const CheckerBoard: React.FC = () => {
     setSelectedChecker(null);
   };
 
+  const shouldPromoteToKing = (
+    isAlreadyKing: boolean,
+    currentPlayerColor: number,
+    row: number,
+    board: number[][]
+  ) => {
+    if (isAlreadyKing) {
+      return false;
+    }
+
+    const isWhitePromotionRow =
+      currentPlayerColor === PIECES.WHITE && row === board.length - 1;
+    const isBlackPromotionRow =
+      currentPlayerColor === PIECES.BLACK && row === 0;
+
+    return isWhitePromotionRow || isBlackPromotionRow;
+  };
+
   const checkForPromotion = (
     row: number,
     col: number,
@@ -99,11 +117,7 @@ const CheckerBoard: React.FC = () => {
     const currentPlayerColor =
       currentPlayer === PLAYERS.WHITE ? PIECES.WHITE : PIECES.BLACK;
 
-    if (
-      !isAlreadyKing &&
-      ((currentPlayerColor === PIECES.WHITE && row === board.length - 1) ||
-        (currentPlayerColor === PIECES.BLACK && row === 0))
-    ) {
+    if (shouldPromoteToKing(isAlreadyKing, currentPlayerColor, row, board)) {
       const newBoard = board.map((innerRow) => [...innerRow]);
       newBoard[row][col] =
         currentPlayerColor === PIECES.WHITE

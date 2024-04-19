@@ -16,7 +16,7 @@ const Board: React.FC<BoardProps> = ({
   handlePress,
   selectedChecker,
 }) => (
-  <View style={styles.board}>
+  <View style={styles.board} testID={'board'}>
     {Array.from({ length: numRows }, (_, row) => (
       <Row
         key={row}

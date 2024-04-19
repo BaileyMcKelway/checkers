@@ -10,7 +10,7 @@ const Row: React.FC<{
   selectedChecker: CheckerPosition | null;
 }> = ({ row, checkers, handlePress, selectedChecker }) => {
   return (
-    <View style={styles.row}>
+    <View style={styles.row} testID={'row'}>
       {Array.from({ length: 8 }, (_, col) => {
         const isSelected =
           selectedChecker &&

@@ -65,9 +65,13 @@ const Square: React.FC<SquareProps> = ({
         { backgroundColor, width: squareSize, height: squareSize },
       ]}
       onPress={() => handlePress(row, col)}
+      testID={'square'}
     >
       {checker !== 0 && (
-        <View style={[styles.checker, { backgroundColor: checkerColor }]}>
+        <View
+          style={[styles.checker, { backgroundColor: checkerColor }]}
+          testID={isCheckerWhite ? 'your-checker' : 'opponent-checker'}
+        >
           {isKing && <Text style={styles.kingText}>K</Text>}
         </View>
       )}
