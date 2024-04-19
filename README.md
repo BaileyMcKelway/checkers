@@ -1,10 +1,10 @@
 # Checkers Game
-<img width="396" alt="Screenshot 2024-04-19 at 12 07 14 AM" src="https://github.com/BaileyMcKelway/checkers/assets/25776618/e2e6f499-f270-4b36-99da-890ea942d67e">
 
 This repository contains a simple implementation of the classic board game Checkers using React Native and TypeScript.
 
 Link: https://checkers-one.vercel.app/
 
+<img width="396" alt="Screenshot 2024-04-19 at 12 07 14 AM" src="https://github.com/BaileyMcKelway/checkers/assets/25776618/e2e6f499-f270-4b36-99da-890ea942d67e">
 
 ## Installation
 
